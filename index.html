@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Prueba técnica que se realiza a los candidatos al cargo de Frontend Developer.</title>
+
+         
+
+
+</head>
+
+
+
+
+<body>
+    
+
+<!--HEADER -->
+
+<header>
+    <div class="icons1">
+        <a href="index.html"><img src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/menu.svg" alt="menu" class="filter-white"> </a>
+        <a href="index.html"><img src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/logo.svg" alt="logo" class="filter-white"> </a>
+       
+    </div>
+    
+    <div class="icons2">
+        <a href="#"><img src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/cart.svg" alt="cart" class="filter-white" ></a>
+        <a href="#"><img src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/search.svg" alt="search" class="filter-white"></a>
+    </div>
+
+</header>
+
+<!--PRODUCTOS -->
+
+
+    <div id="action" ></div>
+
+    <script type="text/x-handlebars-template" id="productsTemplate" >
+        <h1 class="heading"> Cervezas</h1>
+        <div class="cards">
+          
+        {{#each products}}
+       
+         
+            <div class="card">
+              
+                <img src="{{img}}" class="card-image" > 
+                
+                <div class="card-content">
+                    
+                    <div class="P-title">{{name}}</div>
+        
+                    <div class="P-description">{{description}}</div>
+        
+                    <div class="P-price">${{price}}</div>
+              
+                   
+                   
+                </div>
+
+                <div class="card-btn">
+                    <div class="P-btn">AGREGAR</div>
+
+                </div>
+                
+            </div>
+
+
+        
+        {{/each}}
+
+    
+    </div>
+    </script>
+   
+
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+    <script type="text/javascript" >
+        
+        var template = document.getElementById('productsTemplate').innerHTML;
+        
+        console.log(template);
+        
+        var compile = Handlebars.compile(template);
+
+        var data = {
+            products: [
+        {
+            "name": "Cassels Milk Stou",
+            "description": "Cassels & Sons Brewing. Cerveza porter y stout.",
+            "price": 75000,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/cassels.png?raw=true",
+            "filterId": 1
+        },
+        {
+            "name": "Camba Pale Ale",
+            "description": "La Souche Franc-Bois d’hiver. Cerveza pale.",
+            "price": 85300,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/camba.png?raw=true",
+            "filterId": 2
+        },
+        {
+            "name": "Votus Nº 001",
+            "description": "India Pale Ale del año 2019. Nº 001 Red IPA.",
+            "price": 75000,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/votus.png?raw=true",
+            "filterId": 3
+        },
+        {
+            "name": "Prairie Artisian",
+            "description": "Ales Prairie Noir Whiskey Barrel Aged Imperial Stout 12oz.",
+            "price": 85300,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/prairie-artisian.png?raw=true",
+            "filterId": 1
+        },
+        {
+            "name": "Lost Abbey",
+            "description": "The Lost Abbey Citrus Sin American Wild Ale 750ml.",
+            "price": 75000,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/lost-abbey.png?raw=true",
+            "filterId": 2
+        },
+        {
+            "name": "Prairie",
+            "description": "Prairie Artisa Ales Paradise Imperial Stout 12oz.",
+            "price": 85300,
+            "img": "/img/prairie.png",
+            "filterId": 3
+        },
+        {
+            "name": "Redrice",
+            "description": "Hitachino Nest Beer Red Rice Ale 330ml.",
+            "price": 85300,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/redrice.png?raw=true",
+            "filterId": 1
+        },
+        {
+            "name": "Cascade",
+            "description": "Cascade Brewing 2017 Brunch Line BA NORTHWEST Sour Ale.",
+            "price": 175000,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/cascade.png?raw=true",
+            "filterId": 2
+        },
+        {
+            "name": "Topa Topa",
+            "description": "Topa Topa BREWING CO. 5th Year Anniversary clear Ipa 16oz.",
+            "price": 85300,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/topa.png?raw=true",
+            "filterId": 3
+        },
+        {
+            "name": "Mira Brune Nº 6",
+            "description": "Brown Ale, Brown Mira American Style.",
+            "price": 375000,
+            "img": "https://github.com/axiacore/frontend-test/blob/master/img/mira.png?raw=true",
+            "filterId": 1
+        }
+    ]
+           
+        }
+
+       
+        var compiHTML = compile(data);
+       
+        document.getElementById('action').innerHTML += compiHTML;
+
+
+
+    </script>
+
+
+
+<!--filtrar -->
+
+
+<div class="dropdown">
+    <button class="filtrar-btn"><div class="P-btn2">FILTRAR</div> <img src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/filters.svg" alt="filters"  class="filter-white"></button>
+    <div class="dropdown-content" >
+    <a href="#">RUBIA</a>
+    <a href="#">MORENA</a>
+    <a href="#">ROJA</a>
+    </div>
+  </div>
+
+
+<!--footer -->
+<footer>
+
+     <div class="footer1">
+        <p  class="footer1TEXT2">¿Podemos ayudarle?</p>
+        
+        <button class="card-btn3"><div></div><a href="#"><img  class="P-btn3" src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/intercom.svg" alt="intercom" ></a>
+        </button>
+
+        <p class="footer1TEXT">CHAT</p>
+
+        <button class="card-btn3"><div></div><a href="#"><img class="P-btn3" src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/phone.svg" alt="phone"></a>
+        </button>
+       
+        <p class="footer1TEXT">LLAMAR</p>
+
+        
+     </div>
+
+  
+     <div class="footer2">
+        <p>SOBRE NOSOTROS</p>
+        <p>MEDIDAS DE SEGURIDAD (COVID-19)</p>
+        <p>CÓMO MERCAR</p>
+        <p>PROVEEDORES</p>
+        <p>CONTÁCTENOS</p>
+        <p>ZONA DE COBERTURA</p>
+
+        <a href="#"><img src="https://raw.githubusercontent.com/axiacore/frontend-test/master/svg/phone.svg" alt="phone"></a>
+        <p>POLÍTICA DE TRATAMIENTO DE DATOS PERSONALES</p>
+    </div>
+
+
+   
+    
+
+</footer>
+
+</body>
+
+
+</html>
